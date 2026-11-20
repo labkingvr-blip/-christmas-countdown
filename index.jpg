@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Christmas Countdown 🎄</title>
+<style>
+body {
+  background: #103d2e;
+  color: white;
+  text-align: center;
+  font-family: Arial;
+  padding-top: 70px;
+}
+h1 {
+  font-size: 45px;
+  color: gold;
+}
+.clock {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.box {
+  background: white;
+  color: darkgreen;
+  padding: 25px;
+  border-radius: 15px;
+  min-width: 75px;
+}
+.number {
+  font-size: 40px;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<h1>🎄 Christmas Countdown 🎄</h1>
+<h2>Time until Christmas!</h2>
+
+<div class="clock">
+  <div class="box">
+    <div class="number" id="days">0</div>
+    DAYS
+  </div>
+  <div class="box">
+    <div class="number" id="hours">0</div>
+    HOURS
+  </div>
+  <div class="box">
+    <div class="number" id="minutes">0</div>
+    MINUTES
+  </div>
+</div>
+
+<script>
+function countdown() {
+  let now = new Date();
+  let christmas = new Date(
+    now.getFullYear(), 11, 25
+  );
+
+  if (now >= christmas) {
+    christmas = new Date(
+      now.getFullYear() + 1, 11, 25
+    );
+  }
+
+  let difference = christmas - now;
+
+  document.getElementById("days").innerText =
+    Math.floor(difference / 86400000);
+
+  document.getElementById("hours").innerText =
+    Math.floor(difference / 3600000) % 24;
+
+  document.getElementById("minutes").innerText =
+    Math.floor(difference / 60000) % 60;
+}
+
+countdown();
+setInterval(countdown, 1000);
+</script>
+
+</body>
+</html>
